@@ -29,6 +29,24 @@ Before excluding the first token, positional artifacts dominate the scale:
 
 ![raw trace including first-token artifact](trace_raw.PNG)
 
+## Zooming in: token updates as rods
+
+Each token's update to the residual stream (the difference between consecutive states) is decomposed against the sentiment axis: a signed component along it (back/forward), an off-axis magnitude, and a polar "rod" view drawn from a single reference point. Endpoint tokens are excluded as positional artifacts. The notebook includes an animated "needle" view of the same data — a rod deflecting per token: flat for neutral words, lifting for forward, dipping for back. (Animation runs in Colab; GitHub's preview shows a static frame.)
+
+## Finding: the pivot carries the turn
+
+The prediction was that "terrible" — the negative content word — would show the strongest backward tilt. It didn't. The strongest backward tilt falls on **"but"**: the model's state turns negative at the discourse pivot, before any negative word has arrived. The connective does the semantic work, and "terrible" lands in a state already turned.
+
+In imaging terms: the contrast change appears at the boundary marker, not at the structure itself.
+
+!["but" — the pivot dips the needle](needle_but.PNG)
+!["wonderful" — the peak lifts it](needle_wonderful.PNG)
+
+Against a random control axis, rods still tilt — but the tilts bear no relationship to word meaning, confirming the pattern is semantic rather than an artifact of projection.
+
+Caveats, stated plainly: one sentence (n=1), one small model, one layer. Whether the pivot consistently out-tilts the content word is untested. This observation has earned a follow-up experiment, not a claim.
+
+
 ## Imaging parallel
 
 | Imaging | This probe |
