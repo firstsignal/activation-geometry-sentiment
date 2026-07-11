@@ -57,7 +57,7 @@ Caveats, stated plainly: one sentence (n=1), one small model, one layer. Whether
 
 ## Future direction
 
-This is a static readout. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward.
+This reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward.
 
 ## Run it
 
