@@ -1,6 +1,6 @@
 # activation-geometry-sentiment
 
-How meaning moves through a transformer — found, traced, and tested across four model scales. A mechanistic interpretability investigation framed through medical imaging.
+How meaning moves through a transformer — found, traced, and tested across four model scales.
 
 ## What this adds up to
 
