@@ -101,13 +101,14 @@ Finding: the wave. Reading the raw tables, the depth profile is not a smooth cli
 
 Caveats, stated plainly: n=9 pairs; one feature axis (sentiment) and one model family throughout; a single random seed per model (a 50-seed null band is queued); from_pretrained_no_processing used for memory, all four models identically treated (CPU fp32 vs GPU fp16 runs reproduced the small-model tables to the second decimal); the 410m anomaly and its layer-13 spike unexplained; the wave is described, not mechanistically explained. Queued next: the null band, the 410m check, and whether a second feature (tense) breathes at the same depths — if the wave is the network’s rhythm rather than sentiment’s, it should.
 
-## Imaging parallel
+## Experiment overview table: 
 
-| Imaging | This probe |
-|---|---|
-| Registering OCT slabs to a reference frame | Difference-of-means to find the sentiment axis |
-| Contrast enhancement to reveal faint structure | Projection onto the axis |
-| Distinguishing true structure from instrument artifact | Random-direction control; identifying positional artifacts |
+|Chapter           |Question                                 |Method                               |Key finding                                  |
+|------------------|-----------------------------------------|-------------------------------------|---------------------------------------------|
+|1 — Sentiment axis|Is sentiment linearly represented?       |Difference-of-means probe, Pythia-70m|Clean separation vs. random-direction control|
+|2 — Other axes    |Do tense/plurality behave the same way?  |Same probe method, new axes          |Surface features resolve early, then decay   |
+|3 — Decomposition |*( soak decomposition question)*     |…                                    |…                                            |
+|4 — Scaling       |Does the geometry hold across model size?|Cross-scale comparison               |*( concentration-across-scale result)*   |                        ||
 
 ## Future direction
 
