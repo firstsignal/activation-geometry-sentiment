@@ -46,6 +46,17 @@ Against a random control axis, rods still tilt — but the tilts bear no relatio
 
 Caveats, stated plainly: one sentence (n=1), one small model, one layer. Whether the pivot consistently out-tilts the content word is untested. This observation has earned a follow-up experiment, not a claim.
 
+## Chapter 2: the soak — causal evidence that relational change compounds
+
+A matched-pair control first *killed* an earlier finding: with vocabulary held constant, the apparent depth-growth of sentiment separation vanished — it had been substantially lexical. The honest successor was a causal, position-resolved probe: two sentences identical except one word ("wonderful"/"terrible").
+
+Result: positions before the flip show exactly zero difference (causal hygiene). The flipped word carries a large change — trivially. But the five words *after* it — identical strings in both sentences — carry substantial flip-caused change, and that downstream "soak" **grows monotonically with depth** (0.69 at layer 0 to 7.25 at layer 5). One word's change spreads forward and compounds as the network processes.
+
+![causal soak: where the flip lives, and how it compounds](soak_compounding.PNG)
+
+Also in this chapter: a second validated feature axis (tense), found to live at the surface layers while sentiment develops deeper; the two axes are held nearly orthogonally (cosine −0.06). Surface features decay with depth; relational change compounds.
+
+Caveats: n=1 sentence pair; the soak measures total downstream change, not sentiment-specific change; a dip at layer 3 is unexplained; one small model throughout.
 
 ## Imaging parallel
 
@@ -62,3 +73,5 @@ This reads one model, offline. The natural extension is a live **geometric harne
 ## Run it
 
 Open `activation_space_demo.ipynb` in Google Colab (free tier; CPU is sufficient for Pythia-70m). No API keys required.
+
+
