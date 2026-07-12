@@ -1,6 +1,6 @@
 # activation-geometry-sentiment
 
-Finding and validating a sentiment direction in a language model's activations — a mechanistic interpretability probe framed through medical imaging.
+How meaning moves through a transformer — found, traced, and tested across four model scales. A mechanistic interpretability investigation framed through medical imaging.
 
 ## What this adds up to
 
