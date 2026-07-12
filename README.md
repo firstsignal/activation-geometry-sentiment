@@ -2,11 +2,14 @@
 
 Finding and validating a sentiment direction in a language model's activations — a mechanistic interpretability probe framed through medical imaging.
 
-## What this is
+## What this adds up to
 
-A weekend probe of a small language model (Pythia-70m) that locates a single linear direction in the model's residual stream corresponding to sentiment, validates it against a control, and traces it token-by-token as the model reads text.
+A transformer was never asked to represent anything. It was asked to predict, and representation is what prediction forced into existence. This project watched that happen at single-word resolution: flip one word, and the change does not stay where it landed — it soaks forward through words that never changed, compounds with depth, and concentrates onto a direction you can find with subtraction and validate with a random control.
 
-The framing is deliberate. I spent several years as an ophthalmic imaging specialist building computational pipelines (AOSLO, OCT) that make faint biological structure legible and quantifiable. Interpretability is the same problem on a different instrument: find the reference frame in which hidden structure becomes visible, then build the readout. This is the first cell of that idea.
+Three regularities came out of the watching. Meaning assembles: consequence is not present at the embedding, it becomes legible over roughly two layers of attention, and the surprising branch assembles first. Concentration is defended: as models scale and one direction becomes a vanishing slice of the space, the network holds the same absolute share of the change on the feature direction anyway — concentration rises from ~9× to ~20× above chance while the geometry thins beneath it. And the holding has a rhythm: the depth profile is not a climb but a wave, and nine unrelated sentences place their crests and troughs at the same fractional depths. The rhythm belongs to the network. Every sentence dances to it.
+
+None of this is yet a law. It is one feature, one model family, nine sentence pairs, and a set of instruments that killed two of my own predictions before confirming anything. But the instruments are simple enough to hand to anyone — difference of means, a projection, a random direction — and the pattern they reveal is the beginning of something a safety engineer could want: if drift toward a feature is visible before the feature-word arrives, and visible at the same depths regardless of the sentence, then the geometry of the residual stream is not just interpretable after the fact. It is monitorable in flight. That is the harness this repository is walking toward, one controlled cell at a time.
+
 
 ## Method
 
