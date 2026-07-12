@@ -108,7 +108,8 @@ Caveats, stated plainly: n=9 pairs; one feature axis (sentiment) and one model f
 
 ## Future direction
 
-This reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward.Chapter 3 strengthens the case: the soak concentrates onto readable directions, meaning drift toward a feature is visible before the feature-word arrives.
+This reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives.
+
 
 
 ## Run it
