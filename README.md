@@ -79,7 +79,7 @@ Result 3: the model anticipates before any valenced word arrives. At the last sh
 
 Caveats, stated plainly: n=9 pairs for the concentration result, n=1 for the decoding and prior probes; one small model; one axis-building recipe; a single random seed for the null (a proper null band is queued); decoded tokens read by eye; the layer-5 anomaly unexplained.
 
-An earlier cross-model universality probe (Procrustes alignment, 70m vs 160m) is archived on a branch; it lacked null controls and is parked until it can be done properly with CKA and cross-family comparison.
+An earlier cross-model universality probe (Procrustes alignment, 70m vs 160m) was removed; it lacked null controls and is parked in the commit history until it can be done properly with CKA and cross-family comparison.
 
 ## Imaging parallel
 
