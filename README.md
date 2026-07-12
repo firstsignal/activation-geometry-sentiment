@@ -103,14 +103,19 @@ Caveats, stated plainly: n=9 pairs; one feature axis (sentiment) and one model f
 
 ## Experiment overview table: 
 
-|Chapter           |Question                                 |Method                               |Key finding                                  |
-|------------------|-----------------------------------------|-------------------------------------|---------------------------------------------|
-|1 — Sentiment axis|Is sentiment linearly represented?       |Difference-of-means probe, Pythia-70m|Clean separation vs. random-direction control|
-|2 — Other axes    |Do tense/plurality behave the same way?  |Same probe method, new axes          |Surface features resolve early, then decay   |
-|3 — Decomposition |*( soak decomposition question)*     |…                                    |…                                            |
-|4 — Scaling       |Does the geometry hold across model size?|Cross-scale comparison               |*( concentration-across-scale result)*   |                        ||
+
 
 ## Future direction
+
+## Map of the experiments
+
+| Chapter | Question | Method | What survived |
+|---|---|---|---|
+| **1 — The axis** | Is sentiment a linear direction in the residual stream? | Difference-of-means probe (Pythia-70m), random-direction control, per-token trace and "needle" decomposition | Clean separation vs. control. The strongest backward tilt lands on **"but"** — the pivot, not the negative word (n=1). |
+| **2 — The soak** | Does relational change compound with depth? | Matched-pair control, then a causal position-resolved probe (one word flipped) | The control killed the lexical version. The causal soak grows monotonically with depth (0.69 → 7.25). Tense lives at the surface, near-orthogonal to sentiment. |
+| **3 — Decomposition** | What is the soak made of? | Split flip-caused change into on-axis / off-axis; decode the residue through the unembedding; probe the pre-flip prior | Concentration climbs to ~40% by mid-depth (n=9, ~10× null). The residue decodes coherently — structure, not noise — and coherence is *assembled* over ~2 layers. |
+| **4 — Scale** | Does the geometry hold across model size? | Same measurement, Pythia 70m → 160m → 410m → 1B | Absolute ceiling roughly scale-stable (~0.3–0.4) while the null shrinks: ~9× → ~20× above chance. Nine pairs share a depth-wave (r = 0.65–0.80). |
+
 
 This reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives.
 
