@@ -1,6 +1,7 @@
 # Two features, one clock: evidence of scheduled concentration in Pythia
 
-*[Repo link] — all results from locked pre-registered predictions;
+*[*All code, notebooks, and figures: [github.com/firstsignal/activation-geometry-sentiment](https://github.com/firstsignal/activation-geometry-sentiment) — all results from locked pre-registered predictions; kills recorded alongside survivals.*
+] — all results from locked pre-registered predictions;
 kills recorded alongside survivals.*
 
 ## TL;DR
