@@ -142,7 +142,8 @@ This project reads one model, offline. The natural extension is a live **geometr
 
 
 ## Run it
-Open activation_space_demo.ipynb in Google Colab (free tier; CPU is sufficient for Pythia-70m). No API keys required. Chapter 3 lives in ch3-soak-decomposition.ipynb. Chapter 4 lives in ch4-scaling.ipynb (GPU runtime recommended for Pythia-1B).
+Open activation_space_demo.ipynb in Google Colab (free tier; CPU is sufficient for Pythia-70m). No API keys required. Chapter 3 lives in ch3-soak-decomposition.ipynb. Chapter 4 lives in ch4-scaling.ipynb (GPU runtime recommended for Pythia-1B).Chapter 5 lives in ch5-wave-on-trial.ipynb (GPU runtime recommended; Pythia-410m and cross-scale runs).
+
 
 
 
