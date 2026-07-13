@@ -18,6 +18,7 @@ None of this is yet a law. It is one feature, one model family, nine sentence pa
 | **2 — The soak** | Does relational change compound with depth? | Matched-pair control, then a causal position-resolved probe (one word flipped) | The control killed the lexical version. The causal soak grows monotonically with depth (0.69 → 7.25). Tense lives at the surface, near-orthogonal to sentiment. |
 | **3 — Decomposition** | What is the soak made of? | Split flip-caused change into on-axis / off-axis; decode the residue through the unembedding; probe the pre-flip prior | Concentration climbs to ~40% by mid-depth (n=9, ~10× null). The residue decodes coherently — structure, not noise — and coherence is *assembled* over ~2 layers. |
 | **4 — Scale** | Does the geometry hold across model size? | Same measurement, Pythia 70m → 160m → 410m → 1B | Absolute ceiling roughly scale-stable (~0.3–0.4) while the null shrinks: ~9× → ~20× above chance. Nine pairs share a depth-wave (r = 0.65–0.80). |
+| **5 — The wave on trial** | Is the wave real — and whose is it? | Axis-split control; Hilbert phase; cross-scale period; second feature (tense) | Wave survives disjoint axes (0.96). Period is fractional: ~2.7 cycles at 12, 16, and 24 layers. Tense waves too (0.94) at the same period but uncorrelated phase (r = 0.01) — features share the clock, not the beat. |
 
 ## Method
 
