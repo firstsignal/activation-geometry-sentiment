@@ -6,9 +6,10 @@ How meaning moves through a transformer — found, traced, and tested across fou
 
 A transformer was never asked to represent anything. It was asked to predict, and representation is what prediction forced into existence. This project watched that happen at single-word resolution: flip one word, and the change does not stay where it landed — it soaks forward through words that never changed, compounds with depth, and concentrates onto a direction you can find with subtraction and validate with a random control.
 
-Three regularities came out of the watching. Meaning assembles: consequence is not present at the embedding, it becomes legible over roughly two layers of attention, and the surprising branch assembles first. Concentration is defended: as models scale and one direction becomes a vanishing slice of the space, the network holds the same absolute share of the change on the feature direction anyway — concentration rises from ~9× to ~20× above chance while the geometry thins beneath it. And the holding has a rhythm: the depth profile is not a climb but a wave, and nine unrelated sentences place their crests and troughs at the same fractional depths. The rhythm belongs to the network. Every sentence dances to it.
+Three regularities came out of the watching. Meaning assembles: consequence is not present at the embedding, it becomes legible over roughly two layers of attention, and the surprising branch assembles first. Concentration is defended: as models scale and one direction becomes a vanishing slice of the space, the network holds the same absolute share of the change on the feature direction anyway — concentration rises from ~9× to ~20× above chance while the geometry thins beneath it. And the holding has a rhythm: the depth profile is not a climb but a wave, and nine unrelated sentences place their crests and troughs at the same fractional depths. The rhythm belongs to the network. Every sentence dances to it. And the rhythm is shared: a second feature rides the same clock at a different phase — the network doesn’t just breathe, it schedules.
 
-None of this is yet a law. It is one feature, one model family, nine sentence pairs, and a set of instruments that killed two of my own predictions before confirming anything. But the instruments are simple enough to hand to anyone — difference of means, a projection, a random direction — and the pattern they reveal is the beginning of something a safety engineer could want: if drift toward a feature is visible before the feature-word arrives, and visible at the same depths regardless of the sentence, then the geometry of the residual stream is not just interpretable after the fact. It is monitorable in flight. That is the harness this repository is walking toward, one controlled cell at a time.
+None of this is yet a law. It is two features, one model family, nine sentence pairs, and a set of instruments that killed six of my own locked predictions along the way — the kills preserved in the notebooks alongside the survivals. But the instruments are simple enough to hand to anyone — difference of means, a projection, a random direction — and the pattern they reveal is the beginning of something a safety engineer could want: if drift toward a feature is visible before the feature-word arrives, visible at the same fractional depths regardless of the sentence, and scheduled on one clock shared across features, then the geometry of the residual stream is not just interpretable after the fact. It is monitorable in flight. That is the harness this repository is walking toward, one controlled cell at a time.
+
 
 ## Map of the experiments
 
@@ -137,12 +138,18 @@ Caveats, stated plainly: the two-feature comparison is one model (410m); two fea
 
 ## Where this goes: a geometric harness
 
-This project reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives.
+This project reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives. Chapter 5 sharpens it further: if features share one clock at fixed depths, a harness needs to learn one rhythm per network, not one per feature.
 
 
 
 ## Run it
-Open activation_space_demo.ipynb in Google Colab (free tier; CPU is sufficient for Pythia-70m). No API keys required. Chapter 3 lives in ch3-soak-decomposition.ipynb. Chapter 4 lives in ch4-scaling.ipynb (GPU runtime recommended for Pythia-1B).Chapter 5 lives in ch5-wave-on-trial.ipynb (GPU runtime recommended; Pythia-410m and cross-scale runs).
+Open activation_space_demo.ipynb in Google Colab (free tier; CPU is sufficient for Pythia-70m). No API keys required.
+
+Chapter 3 lives in ch3-soak-decomposition.ipynb.
+
+Chapter 4 lives in ch4-scaling.ipynb (GPU runtime recommended for Pythia-1B). 
+
+Chapter 5 lives in ch5-wave-on-trial.ipynb (GPU runtime recommended; Pythia-410m and cross-scale runs).
 
 
 
