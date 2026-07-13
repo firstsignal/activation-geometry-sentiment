@@ -1,6 +1,6 @@
 # activation-geometry-sentiment
 
-How meaning moves through a transformer — found, traced, and tested across four model scales.
+How meaning moves through a transformer — found, traced, and tested across six chapters and four model scales.
 
 ## What this adds up to
 
