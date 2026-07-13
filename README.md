@@ -110,6 +110,31 @@ Finding: the wave. Reading the raw tables, the depth profile is not a smooth cli
 
 Caveats, stated plainly: n=9 pairs; one feature axis (sentiment) and one model family throughout; a single random seed per model (a 50-seed null band is queued); from_pretrained_no_processing used for memory, all four models identically treated (CPU fp32 vs GPU fp16 runs reproduced the small-model tables to the second decimal); the 410m anomaly and its layer-13 spike unexplained; the wave is described, not mechanistically explained. Queued next: the null band, the 410m check, and whether a second feature (tense) breathes at the same depths — if the wave is the network’s rhythm rather than sentiment’s, it should.
 
+## Chapter 5: the wave on trial — three kills, two survivals, and a schedule
+
+Chapter 4 ended with a wave and a suspicion. All nine pairs shared the same per-layer axes, so a wobble in axis *quality* across layers would produce correlated wiggles mechanically — the wave's most dangerous rival explanation. Chapter 5 put it on trial.
+
+**The axis-split control (survived).** Axes built from two disjoint sentence sets — per-layer cosine between them only 0.51–0.82, so genuinely different directions — produce the same wave: cross-set correlation of detrended mean curves 0.96, against within-set 0.78/0.86. The wave is not the instrument's. Side-finding: difference-of-means directions agree only ~0.5 at the surface and converge to ~0.7–0.8 deep — the feature direction itself sharpens with depth, and the axis-agreement peak (0.815) lands on layer 13, the ch4 anomaly layer.
+
+**The chirp (locked, killed).** Prediction: the wave's wavelength stretches with depth. It doesn't — extrema spacing sits at the layer-sampling limit with two inversions, and the late-depth half is *higher*-frequency than the early half. What the corpse revealed: the extrema alternate at nearly every layer, punctuated by quiet stretches — not a stretching wave but a fast oscillation, gated.
+
+**Layer parity (killed).** The fast alternation is not a mechanical even/odd zigzag: r = −0.17 against a pure period-2 reference. The wave locks step briefly, then slips phase.
+
+**The spin (locked, survived).** A polar rendering of the wave appeared to rotate — translated into a claim: the phase drifts systematically against the layer grid. Hilbert phase analysis confirmed it, and reframed everything: mean period **8.43 layers**, a slow oscillation completing ~2.7 cycles across the network with fast ripple on top. This is what confused the earlier instruments.
+
+![the wave in polar — the rotation that prompted the phase analysis](wave_polar_410m.PNG)
+![the spin measured — unwrapped phase vs depth](phase_spin_410m.PNG)
+
+**Fractional or absolute (locked: fractional; survived).** Is the period fixed in layers or in fractional depth? Pythia-160m (12 layers): 2.65 cycles, fractional period 0.38. Pythia-1B (16 layers): 2.71 cycles, 0.37. 410m (24 layers): ~2.7, 0.37. Three depths, one number — the network divides its processing into the same phases whatever the layer budget. The absolute-period hypothesis (predicting 1.4 and 1.9 cycles) is dead by a factor of two.
+
+**The growth law (locked, killed).** The spiral rendering suggested a snail-like geometric envelope. Tested: log-amplitude vs phase, r² = 0.005, growth ×0.97/cycle — no law. What stands instead: the oscillation runs at roughly constant loudness where it runs at all, interrupted by quiet stretches. The envelope is gated, not growing.
+
+**The tense test (locked: same rhythm, same phase; killed — and the kill is the finding).** A second feature axis (tense, ch2 recipe) run through the same causal probe on eight held-out pairs. The tense wave is real — within-pair alignment **0.937**, exceeding sentiment's 0.80 benchmark — and its period matches sentiment's (2.73 vs ~2.7 cycles). But the two waves are **uncorrelated** (r = 0.008): matched frequency, unmatched phase. Where sentiment redistributes, tense concentrates. Two features ride the same ~0.37-fractional clock at different moments — the network doesn't just breathe, it **schedules**.
+
+![two features, one clock — same period, zero phase correlation](tense_wave_test_410m.PNG)
+
+Caveats, stated plainly: the two-feature comparison is one model (410m); two features; n=9/n=8 pairs; Hilbert phase on 12–24 samples is coarse; the phase offset is estimated from short signals; the scheduling claim needs a third feature and a cross-scale phase check; mechanism untested; layer 13 still unexplained — now flagged by three independent instruments (concentration spike, axis-agreement peak, wave amplitude maximum). This chapter also reconciles an apparent tension with ch2: tense's *separability* decays after the surface layers, but its concentration dynamics stay structured to full depth — the feature fades as a cluster while its share of the shockwave keeps oscillating.
+
 ## Where this goes: a geometric harness
 
 This project reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives.
