@@ -82,14 +82,16 @@ absolute-period alternative (predicting 1.4 and 1.9 cycles) is dead by
 a factor of two. The network divides its depth into the same phases
 whatever its layer budget.
 
-## Finding 5: a second feature rides the same clock, out of phase
-A tense axis (past/present), same causal probe, eight held-out pairs.
-The tense wave is real — within-pair alignment 0.937, exceeding
-sentiment's 0.80 — and its period matches (2.73 vs ~2.7 cycles). But
-the two waves are uncorrelated (r = 0.008): matched frequency,
-unmatched phase. Where sentiment redistributes, tense concentrates.
-Two features time-share one clock. This is the result the title claims,
-and the one I could not find in prior work.
+## Finding 5: features hold fixed phase addresses on one shared clock
+A tense axis (past/present) and a plurality axis (singular/plural), each run through the same causal probe as sentiment. Both wave. Tense’s period matches sentiment’s (2.73 vs ~2.7 cycles); plurality’s single-curve period read high (3.98), but a split-half test showed that estimate scattering 2.8–6.3 across random halves — an artifact of Hilbert phase on a weak carrier, not a different clock.
+
+The phase story required a better instrument than the averaged waves could support: an amplitude-masked comparison of the mean curves left only 1–6 of 24 layers jointly loud — unmeasurable. The repair: per-pair phase. Each sentence pair’s individual wave was compared against the sentiment reference, with circular statistics across pairs and a self-control. The control passed (sentiment pairs vs their own mean: R = 0.99), and then the structure appeared. Five tense pairs report offsets within 0.25 rad of each other, mean +1.55 rad = 0.49π — quadrature to two decimals (R = 1.00, Rayleigh p < 0.001). Nine plurality pairs cluster at +0.37 rad ≈ 21° (R = 0.97). Three features, three angles, one clock.
+
+This resolves ch5’s puzzle exactly: two same-period waves at 90° correlate at zero — the r = 0.008 that read as “unrelated” was orthogonality’s shadow. And it kills the natural prior that grammatical features would share a slot: plurality sits near sentiment’s angle, nowhere near tense’s. Phase offset appears to encode feature identity.
+
+Distinctness of plurality’s 21° from the control’s 0° was tested with a two-sample circular comparison (permutation test, 10k shuffles): [p = ___ — verdict: three distinct slots / two slots plus one candidate].
+
+Limits: one model (410m); tense’s n = 5 after three pairs abstained under the joint-loudness rule; angles measured against sentiment’s mean curve as reference; cross-scale phase check queued; mechanism untested.
 
 ## What died along the way
 The chirp (killed): the wavelength does not stretch — which forced the
