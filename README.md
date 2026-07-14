@@ -20,7 +20,7 @@ None of this is yet a law. It is three features, one model family, nine sentence
 | **3 — Decomposition** | What is the soak made of? | Split flip-caused change into on-axis / off-axis; decode the residue through the unembedding; probe the pre-flip prior | Concentration climbs to ~40% by mid-depth (n=9, ~10× null). The residue decodes coherently — structure, not noise — and coherence is *assembled* over ~2 layers. |
 | **4 — Scale** | Does the geometry hold across model size? | Same measurement, Pythia 70m → 160m → 410m → 1B | Absolute ceiling roughly scale-stable (~0.3–0.4) while the null shrinks: ~9× → ~20× above chance. Nine pairs share a depth-wave (r = 0.65–0.80). |
 | **5 — The wave on trial** | Is the wave real — and whose is it? | Axis-split control; Hilbert phase; cross-scale period; second feature (tense) | Wave survives disjoint axes (0.96). Period is fractional: ~2.7 cycles at 12, 16, and 24 layers. Tense waves too (0.94) at the same period but uncorrelated phase (r = 0.01) — features share the clock, not the beat. |
-| **6 — The phase slots** | Does a third feature share the clock — and where does it sit? | Plurality axis (ch2 sets), noun-only past-tense flip pairs; per-pair Hilbert phase with circular statistics and a self-control | Plurality waves (0.64, at threshold). Per-pair phase offsets cluster hard: sentiment 0° (control, R=0.99), plurality ~21° (R=0.97), tense ~89° — **quadrature** (R=1.00). Three features, three locked angles, one clock. ch5's r=0.01 resolved: orthogonality, not non-relation. Distinctness confirmed (permutation p = 0.006).|
+| **6 — The phase slots** | Does a third feature share the clock — and where does it sit? | Plurality axis (ch2 sets), noun-only past-tense flip pairs; per-pair Hilbert phase with circular statistics and a self-control | Plurality waves (0.64, at threshold). Per-pair phase offsets cluster hard: sentiment 0° (control, R=0.99), plurality ~21° (R=0.97), tense ~89° — **quadrature** (R=1.00). Three features, three locked angles, one clock. ch5's r=0.01 resolved: orthogonality, not non-relation. Distinctness confirmed (permutation p = 0.006).| | **7 — The stranger** | Does the clock belong to Pythia or to transformers? | Phase-Slot Hypothesis stated as one equation; pipeline packaged (`phaseprobe`); same probe on GPT-2 small (12 layers, foreign family) | Wave replicates and strengthens (0.877 vs 0.80 benchmark). Period does not transfer: 1.60 vs ~2.7 cycles — **family-specific clock, universal clock-structure**. Slot structure gated (tense/plurality R = 0.17/0.11, below the locked gate); unresolved, not absent. Chapter open. |
 
 
 ## Method
@@ -160,6 +160,30 @@ The distinctness gate, closed. The final queued test: is plurality’s 21° genu
 
 
 Caveats, stated plainly: one model (410m); three of eight tense pairs abstained under the joint-loudness rule, so tense’s n = 5; all angles are measured against sentiment’s mean curve as the reference; plurality’s 21° is confirmed distinct from the control’s 0° by two-sample circular tests (Watson–Williams p = 0.0043; assumption-free permutation test, 10k shuffles, p = 0.0056); the plurality axis may carry verb-agreement flavour from the ch2 sets; the quadrature reading of r = 0.008 was an interpretive hunch preceding the ch6 data, not a locked prediction — the locked predictions this chapter graded were the three above; mechanism untested; cross-scale phase check queued.
+
+
+Chapter 7: one clock, many models — the hypothesis meets a stranger
+
+Six chapters, one model family. Every number so far could in principle be a fact about EleutherAI’s training recipe rather than about transformers. Chapter 7 compressed the findings into a single falsifiable statement and handed the instrument to a foreign model.
+
+The Phase-Slot Hypothesis. For feature f, the detrended concentration wave at fractional depth t is
+
+**w_f(t) = A_f(t) · cos(2πν·t + φ_f)**
+
+with three constraints carrying the content: ν belongs to the network, not the feature (one frequency for all features, constant in fractional depth across layer budgets — ν ≈ 2.7 in Pythia); φ_f belongs to the feature, not the sentence (a fixed phase address, held pair-by-pair at R ≥ 0.96, distinct across features at permutation p = 0.005); A_f is a gated envelope (no growth law — the clock always ticks, the loudness comes and goes). The universality claim, stated to be broken: the constraints hold for any sufficiently trained transformer, with ν possibly family-specific.
+
+The stranger: GPT-2 small — 12 layers, different lab, different data, different tokenizer, different architectural details. The instrument was packaged (phaseprobe: model name in, angles and clock-face out — the ch6 pipeline as a reusable probe) and three predictions locked before the run.
+
+P1 — the wave exists (survived, strongly). Sentiment within-pair alignment 0.877 — above Pythia-410m’s 0.80. Nine pairs place their crests at the same fractional depths in a model Pythia never met. The wave is a property of trained transformers, not of one family.
+
+P2 — the period transfers (killed; the kill is the finding). GPT-2 completes 1.60 cycles against Pythia’s ~2.7. Not noise — the self-control clusters at R = 0.97; the wave is coherent and simply ticks at its own rate. The pre-named sub-outcome lands: family-specific clock, universal clock-structure. The equation survives with its first constraint scoped: ν is a per-network constant.
+
+P3 — the slots transfer (gated; no verdict). Tense and plurality per-pair R collapse to 0.17 and 0.11 — far below the locked R > 0.7 gate. A permutation test on those scattered angles printed p = 0.014 and was disregarded per the gate: a mean of near-uniform scatter is not a slot address. Slot structure in GPT-2 is unresolved, not absent. Three suspects, in order: instrument starvation (1.6 cycles over 12 layers is thin for per-pair Hilbert phase); Pythia-tuned axes (the grammatical sentence sets were built on Pythia’s representations); or GPT-2 genuinely not slotting grammatical features — admissible only once the first two are killed.
+
+Caveats, stated plainly: one foreign model, one size (124M); CPU fp32 run (weights via curl, local-disk load — the HF CDN incident of the day, see ch6); the same nine-pair sets throughout; the tense/plurality collapse undiagnosed as of this commit. Queued: GPT-2-medium (24 layers — matches 410m’s depth, tests the starvation suspect directly); GPT-2-native axis sets; a cross-family ν survey.
+
+![the stranger's clock — sentiment locks, grammar scatters](phase_slots_gpt2.PNG)
+
 
 ## Where this goes: a geometric harness
 
