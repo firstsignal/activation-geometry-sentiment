@@ -93,6 +93,8 @@ Distinctness of plurality’s 21° from the control’s 0° was tested with a tw
 
 Limits: one model (410m); tense’s n = 5 after three pairs abstained under the joint-loudness rule; angles measured against sentiment’s mean curve as reference; cross-scale phase check queued; mechanism untested.
 
+This is the result the title claims, and the one I could not find in prior work: not just shared timing, but feature-specific phase addresses on a common cycle.
+
 ## What died along the way
 The chirp (killed): the wavelength does not stretch — which forced the
 Hilbert analysis that found the true slow period. Layer-parity
