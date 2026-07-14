@@ -1,4 +1,4 @@
-# Two features, one clock: evidence of scheduled concentration in Pythia
+# Three features, one clock: phase encodes feature identity in Pythia
 
 *All code, notebooks, and figures: github.com/firstsignal/activation-geometry-sentiment — all results from locked pre-registered predictions; kills recorded alongside survivals.*
 
@@ -92,6 +92,8 @@ Distinctness of plurality’s 21° from the control’s 0° was tested with a tw
 Limits: one model (410m); tense’s n = 5 after three pairs abstained under the joint-loudness rule; angles measured against sentiment’s mean curve as reference; cross-scale phase check queued; mechanism untested.
 
 This is the result the title claims, and the one I could not find in prior work: not just shared timing, but feature-specific phase addresses on a common cycle.
+
+Distinctness of plurality’s 21° from the control’s 0° was tested with a two-sample circular comparison: Watson–Williams p = 0.0043, assumption-free permutation test (10k shuffles) p = 0.0056 — three distinct slots.
 
 ## What died along the way
 The chirp (killed): the wavelength does not stretch — which forced the
