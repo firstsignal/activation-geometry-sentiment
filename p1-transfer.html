@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P1 crosses — the rhythm travels, the tempo doesn't</title>
+<style>
+  html, body { margin:0; height:100%; background:#0b0b0e; overflow:hidden;
+               font-family: Georgia, 'Times New Roman', serif; }
+  #wrap { position:fixed; inset:0; }
+  .label { position:fixed; color:#c9c4bb; text-align:center; pointer-events:none; }
+  .model { top:7%; width:44%; font-size:clamp(13px,2.4vw,19px); letter-spacing:.14em; }
+  .model .nu { display:block; font-size:clamp(11px,1.9vw,15px); color:#dc143c;
+               letter-spacing:.06em; margin-top:.3em; font-style:italic; }
+  #lab-p { left:3%; }  #lab-g { right:3%; }
+  #ghostnote { bottom:14%; left:50%; transform:translateX(-50%);
+               font-size:clamp(10px,1.7vw,13px); color:#6b6560; font-style:italic;
+               width:min(90%,560px); }
+  #caption { bottom:5%; left:50%; transform:translateX(-50%);
+             font-size:clamp(12px,2.1vw,17px); color:#e8e3da; width:min(92%,640px); }
+  #caption em { color:#dc143c; font-style:normal; }
+</style>
+</head>
+<body>
+<div id="wrap"></div>
+<div class="label model" id="lab-p">PYTHIA-410m<span class="nu">&nu; = 2.7 &mdash; its own tempo</span></div>
+<div class="label model" id="lab-g">GPT-2<span class="nu">&nu; = 1.6 &mdash; its own tempo</span></div>
+<div class="label" id="ghostnote">faint inside the second cube: the 2.7-cycle tempo that did not survive the crossing &mdash; P2, killed</div>
+<div class="label" id="caption">P1 crossed. <em>The rhythm travels; the tempo doesn&rsquo;t.</em></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const W = () => window.innerWidth, H = () => window.innerHeight;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, W()/H(), 0.1, 100);
+  camera.position.set(0, 0.6, 9.2);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W(), H());
+  renderer.setClearColor(0x0b0b0e, 1);
+  document.getElementById('wrap').appendChild(renderer.domElement);
+
+  const CRIMSON = 0xdc143c, WIRE = 0x3a3a42;
+  const N = 160;                       // points per wave
+  const CUBE = 2.35;                   // cube edge
+  const half = CUBE/2;
+
+  function cubeGroup(x){
+    const g = new THREE.Group();
+    const geo = new THREE.BoxGeometry(CUBE, CUBE, CUBE);
+    const edges = new THREE.EdgesGeometry(geo);
+    g.add(new THREE.LineSegments(edges,
+      new THREE.LineBasicMaterial({ color: WIRE, transparent:true, opacity:0.9 })));
+    g.position.x = x;
+    scene.add(g);
+    return g;
+  }
+
+  function waveLine(color, opacity){
+    const pos = new Float32Array(N*3);
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const mat = new THREE.LineBasicMaterial({ color, transparent:true, opacity });
+    const line = new THREE.Line(geo, mat);
+    return { line, pos, geo, mat };
+  }
+
+  // depth runs along the cube's x-axis; wave oscillates in y; slight z drift for 3-D life
+  function setWave(w, nu, phase, amp, t){
+    for (let i=0; i<N; i++){
+      const u = i/(N-1);                                  // fractional depth 0..1
+      const env = amp * (0.55 + 0.45*Math.sin(2*Math.PI*(u*0.9 + t*0.05)));  // gated envelope
+      const y = env * Math.cos(2*Math.PI*nu*u + phase);
+      const z = 0.22 * Math.sin(2*Math.PI*(u + t*0.03));
+      w.pos[i*3]   = -half + u*CUBE;
+      w.pos[i*3+1] = y;
+      w.pos[i*3+2] = z;
+    }
+    w.geo.attributes.position.needsUpdate = true;
+  }
+
+  const gap = 2.55;
+  const pyCube = cubeGroup(-gap);
+  const gtCube = cubeGroup(+gap);
+
+  const pyWave = waveLine(CRIMSON, 0.95); pyCube.add(pyWave.line);
+  const gtWave = waveLine(CRIMSON, 0.0);  gtCube.add(gtWave.line);   // fades in on arrival
+  const ghost  = waveLine(CRIMSON, 0.0);  gtCube.add(ghost.line);    // the killed tempo
+
+  // the travelling pulse: P1 crossing between cubes
+  const pulse = new THREE.Mesh(
+    new THREE.SphereGeometry(0.085, 16, 16),
+    new THREE.MeshBasicMaterial({ color: CRIMSON, transparent:true, opacity:0 }));
+  scene.add(pulse);
+  const trail = waveLine(CRIMSON, 0);           // small wave-packet riding with the pulse
+  scene.add(trail.line);
+
+  function setPacket(cx, phase, fade){
+    const span = 1.15, n = N;
+    for (let i=0; i<n; i++){
+      const u = i/(n-1);
+      const x = cx - span/2 + u*span;
+      const window_ = Math.exp(-Math.pow((u-0.5)/0.18, 2));   // gaussian packet
+      trail.pos[i*3]   = x;
+      trail.pos[i*3+1] = 0.5*window_*Math.cos(2*Math.PI*2.7*u + phase);
+      trail.pos[i*3+2] = 0;
+    }
+    trail.geo.attributes.position.needsUpdate = true;
+    trail.mat.opacity = fade;
+  }
+
+  const PERIOD = 9.0;   // seconds per full story loop
+  const clock = new THREE.Clock();
+
+  function loop(){
+    requestAnimationFrame(loop);
+    const t = clock.getElapsedTime();
+    const s = (t % PERIOD) / PERIOD;      // 0..1 story phase
+
+    // gentle counter-rotation
+    pyCube.rotation.y =  0.35*Math.sin(t*0.18) + 0.25;
+    pyCube.rotation.x =  0.12*Math.sin(t*0.13);
+    gtCube.rotation.y = -0.35*Math.sin(t*0.18) - 0.25;
+    gtCube.rotation.x =  0.12*Math.cos(t*0.11);
+
+    // Pythia's wave: always alive at its own tempo
+    setWave(pyWave, 2.7, t*1.1, 0.72, t);
+
+    // Story beats:
+    //  0.00–0.18 Pythia alone breathes
+    //  0.18–0.52 the packet crosses the gap (P1 travelling)
+    //  0.52–0.70 arrival: ghost 2.7 flickers and dies (P2), native 1.6 fades in (P1 survives)
+    //  0.70–1.00 both cubes breathe, each at its own tempo; ghost stays faint
+    let crossFade = 0, px = -gap;
+    if (s > 0.18 && s < 0.52){
+      const u = (s-0.18)/0.34;
+      px = -gap + u*(2*gap);
+      crossFade = Math.sin(Math.PI*u);            // in and out
+      pulse.position.set(px, 0.55*Math.sin(Math.PI*u), 0);
+      pulse.material.opacity = crossFade;
+      setPacket(px, t*3.0, 0.8*crossFade);
+    } else {
+      pulse.material.opacity = 0;
+      trail.mat.opacity = 0;
+    }
+
+    // ghost: 2.7 tempo trying to live in GPT-2, failing
+    let ghostOp = 0;
+    if (s >= 0.50 && s < 0.72){
+      const u = (s-0.50)/0.22;
+      ghostOp = 0.55*(1-u) * (0.6 + 0.4*Math.sin(t*14));    // flicker while dying
+    } else if (s >= 0.72){
+      ghostOp = 0.10;                                        // faint permanent scar
+    }
+    ghost.mat.opacity = ghostOp;
+    setWave(ghost, 2.7, t*1.1, 0.55, t);
+
+    // GPT-2's native wave: arrives with the packet, settles at its own tempo
+    let gtOp = 0;
+    if (s >= 0.50) gtOp = Math.min(1, (s-0.50)/0.14) * 0.95;
+    gtWave.mat.opacity = gtOp;
+    setWave(gtWave, 1.6, t*0.85, 0.72, t);
+
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = W()/H();
+    camera.updateProjectionMatrix();
+    renderer.setSize(W(), H());
+  });
+
+  loop();
+})();
+</script>
+</body>
+</html>
