@@ -1,8 +1,6 @@
 # Two features, one clock: evidence of scheduled concentration in Pythia
 
-*[*All code, notebooks, and figures: [github.com/firstsignal/activation-geometry-sentiment](https://github.com/firstsignal/activation-geometry-sentiment) — all results from locked pre-registered predictions; kills recorded alongside survivals.*
-] — all results from locked pre-registered predictions;
-kills recorded alongside survivals.*
+*All code, notebooks, and figures: github.com/firstsignal/activation-geometry-sentiment — all results from locked pre-registered predictions; kills recorded alongside survivals.*
 
 ## TL;DR
 Flip one word in a sentence and trace how the change concentrates onto a
