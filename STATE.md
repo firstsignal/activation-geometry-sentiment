@@ -1,4 +1,4 @@
-# State — 13 July 2026
+**State — 13 July 2026**
 
 Ch5 complete & committed: wave survived axis-split (0.96); period
 fractional (0.37 at 12/16/24 layers); chirp/parity/growth-law killed;
@@ -95,4 +95,54 @@ Infra note: HF XET/CDN large-file stalls all day 14 Jul; curl of
 safetensors or .bin direct usually works; verify by byte count,
 never the progress bar. One runtime at a time on free tier;
 GPU quota now metered — GPT-2-small runs fine on CPU fp32 (~30min).
+
+**State — 15 July 2026**
+
+Ch1–6 CLOSED & pushed. Ch6 verdict: three distinct phase slots
+(0°/21°/89°), permutation p=0.0052, reproduced 4× now.
+
+Ch7 OPEN (ch7-one-clock-many-models.ipynb):
+- Equation: w_{f,m}(t) = A_{f,m}(t)·cos(2πν_m·t + φ_{f,m}).
+  Form universal, constants per-model ("local bubble"). ν_m =
+  cycles per fractional depth: Pythia 2.72, GPT-2 1.60.
+- Session 1 verdicts: P1 SURVIVED (gpt2 sentiment alignment 0.877 —
+  wave is cross-family); P2 KILLED (1.60 vs 2.7 — ν is per-network:
+  family-specific clock, universal clock-structure); P3 GATED
+  (tense/plurality per-pair R 0.17/0.11 < locked 0.7 gate; printed
+  p=0.014 disregarded per gate). Suspect ranking for grammar
+  collapse: (2) Pythia-tuned axes now leads — GPT-2 grammar waves
+  absent entirely (alignments -0.03/0.16) while sentiment thrives;
+  (1) instrument starvation (1.6 cyc/12 layers); (3) genuinely no
+  slots — only after 1&2 die.
+- Session 2 done: overlay figure two_breathers_one_ruler.png —
+  both waves recomputed fresh & certified vs prior values
+  (pythia 0.796/2.72 vs ref 0.80/2.72; gpt2 0.875/1.60 vs
+  0.877/1.60). phaseprobe package = ch7 cell 1.
+- CDN incident RESOLVED 15 Jul — standard Hub loads work again;
+  curl cells kept for provenance only.
+
+NEXT (in order):
+1. GPT-2-native tense/plurality axis sets — PRE-REGISTER stakes
+   before running (tests suspect 2). Recipe: build axis sentence
+   sets, validate separation on GPT-2 first (ch2 discipline), then
+   per-pair phase vs gpt2 sentiment reference.
+2. GPT-2-medium (24 layers) — tests suspect 1; pre-register fresh.
+3. THE WRITEUP (writeup.md) — ships before ch8. Title: "Three
+   features, one clock: phase encodes feature identity in Pythia."
+   Finding 5 rewritten (done); pending: TL;DR update, Related-Work
+   delta, byline dedup, ch7 as closing cross-family section.
+4. README: ch7 row + section added ("Chapter open"); add overlay
+   figure; kill tally at 8.
+
+Parked: cross-family ν survey; what sets ν_m ("find the pendulum" —
+architecture/data/optimizer?); ν-as-fingerprint hypothesis;
+cross-family slot-geometry comparison (only after GPT-2 slots pass
+R gate); cross-scale phase check 160m/1B; abstaining tense pairs;
+subspace probe; layer-13 autopsy; 50-seed null band.
+Excluded from writing: "Microsoft clock crash" association.
+
+Working rules: cells 1 (phaseprobe) + 2 (sentence sets) first in
+every fresh session; one runtime at a time; verify downloads by
+byte count; ch6 is a museum — visit read-only, never save.
+
 
