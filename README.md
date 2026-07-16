@@ -1,3 +1,5 @@
+*If you use this work or the phaseprobe method, please cite this repository (Naomi James, 2026)*
+
 # activation-geometry-sentiment
 
 How meaning moves through a transformer — found, traced, and tested across six chapters and four model scales.
