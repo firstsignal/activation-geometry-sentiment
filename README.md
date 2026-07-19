@@ -22,7 +22,7 @@ None of this is yet a law. It is three features, one model family, nine sentence
 | **3 — Decomposition** | What is the soak made of? | Split flip-caused change into on-axis / off-axis; decode the residue through the unembedding; probe the pre-flip prior | Concentration climbs to ~40% by mid-depth (n=9, ~10× null). The residue decodes coherently — structure, not noise — and coherence is *assembled* over ~2 layers. |
 | **4 — Scale** | Does the geometry hold across model size? | Same measurement, Pythia 70m → 160m → 410m → 1B | Absolute ceiling roughly scale-stable (~0.3–0.4) while the null shrinks: ~9× → ~20× above chance. Nine pairs share a depth-wave (r = 0.65–0.80). |
 | **5 — The wave on trial** | Is the wave real — and whose is it? | Axis-split control; Hilbert phase; cross-scale period; second feature (tense) | Wave survives disjoint axes (0.96). Period is fractional: ~2.7 cycles at 12, 16, and 24 layers. Tense waves too (0.94) at the same period but uncorrelated phase (r = 0.01) — features share the clock, not the beat. |
-| **6 — The phase slots** | Does a third feature share the clock — and where does it sit? | Plurality axis (ch2 sets), noun-only past-tense flip pairs; per-pair Hilbert phase with circular statistics and a self-control | Plurality waves (0.64, at threshold). Per-pair phase offsets cluster hard: sentiment 0° (control, R=0.99), plurality ~21° (R=0.97), tense ~89° — **quadrature** (R=1.00). Three features, three locked angles, one clock. ch5's r=0.01 resolved: orthogonality, not non-relation. Distinctness confirmed (permutation p = 0.006).| | **7 — The stranger** | Does the clock belong to Pythia or to transformers? | Phase-Slot Hypothesis stated as one equation; pipeline packaged (`phaseprobe`); same probe on GPT-2 small (12 layers, foreign family) | Wave replicates and strengthens (0.877 vs 0.80 benchmark). Period does not transfer: 1.60 vs ~2.7 cycles — **family-specific clock, universal clock-structure**. Slot structure gated (tense/plurality R = 0.17/0.11, below the locked gate); unresolved, not absent. Chapter open. |
+| **6 — The phase slots** | Does a third feature share the clock — and where does it sit? | Plurality axis (ch2 sets), noun-only past-tense flip pairs; per-pair Hilbert phase with circular statistics and a self-control | Plurality waves (0.64, at threshold). Per-pair phase offsets cluster hard: sentiment 0° (control, R=0.99), plurality ~21° (R=0.97), tense ~89° — **quadrature** (R=1.00). Three features, three locked angles, one clock. ch5's r=0.01 resolved: orthogonality, not non-relation. Distinctness confirmed (permutation p = 0.006).| **7 — The stranger** | Does the clock belong to Pythia or to transformers? | Phase-Slot Hypothesis stated as one equation; pipeline packaged (`phaseprobe`); same probe on GPT-2 small (12 layers, foreign family) | Wave replicates and strengthens (0.877 vs 0.80 benchmark). Period does not transfer: 1.60 vs ~2.7 cycles — **family-specific clock, universal clock-structure**. Slot structure gated (tense/plurality R = 0.17/0.11, below the locked gate); unresolved, not absent. Chapter open. |
 
 
 ## Method
@@ -208,9 +208,6 @@ Chapter 7 lives in ch7-one-clock-many-models.ipynb (chapter open; GPT-2 small ru
 
 ![two breathers, one ruler — one wave form, two family tempos](two_breathers_one_ruler.png)
 
-
-## ![two breathers, one ruler — one wave form, two family tempos](two_breathers_one_ruler.png)
-The transfer, animated
 
 A looping visualisation of ch7's result: the wave leaves Pythia's cube, crosses to GPT-2's, and takes hold at its own tempo — while the 2.7-cycle ghost that didn't survive the crossing flickers and dies to a faint trace. The rhythm travels; the tempo doesn't.
 
