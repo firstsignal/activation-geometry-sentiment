@@ -187,6 +187,8 @@ Caveats, stated plainly: one foreign model, one size (124M); CPU fp32 run (weigh
 
 ![the stranger's clock — sentiment locks, grammar scatters](phase_slots_gpt2.PNG)
 
+## ![two breathers, one ruler — one wave form, two family tempos]
+(two_breathers_one_ruler.PNG) The transfer animated
 
 ## Where this goes: a geometric harness
 
@@ -206,10 +208,6 @@ Chapter 5 lives in ch5-wave-on-trial.ipynb (GPU runtime recommended; Pythia-410m
 Chapter 6 lives in ch6-plurality-phase-slot.ipynb (GPU runtime recommended; Pythia-410m).(Loads weights via curl + local disk in the final cells — a workaround for an HF CDN incident on the day of the run; the standard Hub route works equally well.)
 
 Chapter 7 lives in ch7-one-clock-many-models.ipynb (chapter open; GPT-2 small runs on free-tier CPU in ~30 min — no GPU needed. Weights load via curl + local disk in the current cells, a workaround for an HF CDN incident on the day of the run; the standard Hub route works equally well on a normal day).
-
-## ![two breathers, one ruler — one wave form, two family tempos]
-(two_breathers_one_ruler.PNG) The transfer animated
-
 
 A looping visualisation of ch7's result: the wave leaves Pythia's cube, crosses to GPT-2's, and takes hold at its own tempo — while the 2.7-cycle ghost that didn't survive the crossing flickers and dies to a faint trace. The rhythm travels; the tempo doesn't.
 
