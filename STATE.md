@@ -145,4 +145,59 @@ Working rules: cells 1 (phaseprobe) + 2 (sentence sets) first in
 every fresh session; one runtime at a time; verify downloads by
 byte count; ch6 is a museum — visit read-only, never save.
 
+Continuing my activation-geometry-sentiment interpretability project
+(github.com/firstsignal/activation-geometry-sentiment). Memory + this
+STATE.md should orient you fully. Today's task: THE WRITEUP.
+
+**State — 19 July 2026 (work last touched 15 Jul; resuming at item 1)**
+
+Ch1–6 CLOSED & pushed. Ch6: three distinct phase slots (0°/21°/89°),
+permutation p=0.0052, reproduced 4×. Repo: MIT license, citation line,
+p1-transfer.html animation, 8 kills on record.
+
+Ch7 OPEN (ch7-one-clock-many-models.ipynb):
+- Equation: w_{f,m}(t) = A_{f,m}(t)·cos(2πν_m·t + φ_{f,m}).
+  Form universal, constants per-model. ν_m = cycles per fractional
+  depth: Pythia 2.72, GPT-2 1.60. Reproduces across dtype/hardware/
+  sessions → pendulum is in the weights.
+- Verdicts: P1 SURVIVED (gpt2 sentiment alignment 0.875–0.877; wave
+  is cross-family). P2 KILLED (1.60 vs 2.7; family-specific clock,
+  universal clock-structure). P3 GATED (tense/plur per-pair R
+  0.17/0.11 < locked 0.7; printed p=0.014 disregarded per gate).
+  Suspects: (2) Pythia-tuned axes LEADS (gpt2 grammar waves absent,
+  alignments -0.03/0.16, sentiment thrives); (1) starvation
+  (1.6 cyc/12 layers); (3) no slots — only after 1&2 die.
+- Overlay figure two_breathers_one_ruler.png done; both waves
+  recomputed fresh & certified (pythia 0.796/2.72 vs ref 0.80/2.72;
+  gpt2 0.875/1.60 vs 0.877/1.60). phaseprobe package = ch7 cell 1.
+- CDN incident resolved; standard Hub loads work.
+
+NEXT, in order:
+1. WRITEUP (writeup.md) — TODAY. Title: "Three features, one clock:
+   phase encodes feature identity in Pythia". Finding 5 already
+   rewritten w/ distinctness result (WW p=0.0037, perm p=0.0052).
+   Pending: TL;DR update (drop "zero phase correlation" punchline →
+   three slots), Related-Work delta paragraph, byline dedup (bracket
+   error), soften "all results from locked pre-registered predictions"
+   → "predictions locked before each run; kills recorded alongside
+   survivals", ch7 as closing cross-family section, voice-pass.
+   Goal: Alignment Forum post = public priority stamp.
+2. GPT-2-native tense/plurality axes — pre-registered (drafted stakes
+   S1 70% separation-check passes / S2 55% wave appears / S3 45%
+   distinct slot). Same sentence sets, axes rebuilt on GPT-2 = cleanest
+   suspect-2 test. If axis separates but wave still absent → suspect 1
+   leads → GPT-2-medium becomes decisive.
+3. GPT-2-medium (24L), pre-register fresh.
+4. Then ch8: "The Pendulum" — what sets ν_m.
+
+Parked: cross-family ν survey; ν-as-fingerprint; cross-family
+slot-geometry (only after gpt2 slots pass R gate); 160m/1B phase
+check; abstaining tense pairs; subspace probe; layer-13 autopsy;
+50-seed null band. Excluded from writing: "Microsoft clock" note.
+
+Working rules: phaseprobe cell + sentence-sets cell first in every
+fresh session; one runtime at a time; verify downloads by byte count;
+ch6 is a museum (read-only, never save).
+
+
 
