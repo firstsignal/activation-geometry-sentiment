@@ -2,6 +2,12 @@
 
 # activation-geometry-sentiment
 
+> **Update (Oct 2026):** Chapter 8 built a better instrument and tested
+> the old one on synthetic signals. Some conclusions below changed: the
+> "clock rate" (ν) readings were unreliable, and the Chapter 6 phase
+> slots are being re-tested. The soak and scaling results stand.
+> Details in `ch8-the-pendulum.ipynb`.
+
 How meaning moves through a transformer — found, traced, and tested across six chapters and four model scales.
 
 ## What this adds up to
@@ -24,6 +30,7 @@ None of this is yet a law. It is three features, one model family, nine sentence
 | **5 — The wave on trial** | Is the wave real — and whose is it? | Axis-split control; Hilbert phase; cross-scale period; second feature (tense) | Wave survives disjoint axes (0.96). Period is fractional: ~2.7 cycles at 12, 16, and 24 layers. Tense waves too (0.94) at the same period but uncorrelated phase (r = 0.01) — features share the clock, not the beat. |
 | **6 — The phase slots** | Does a third feature share the clock — and where does it sit? | Plurality axis (ch2 sets), noun-only past-tense flip pairs; per-pair Hilbert phase with circular statistics and a self-control | Plurality waves (0.64, at threshold). Per-pair phase offsets cluster hard: sentiment 0° (control, R=0.99), plurality ~21° (R=0.97), tense ~89° — **quadrature** (R=1.00). Three features, three locked angles, one clock. ch5's r=0.01 resolved: orthogonality, not non-relation. Distinctness confirmed (permutation p = 0.005).
 | **7 — The stranger** | Does the clock belong to Pythia or to transformers? | Phase-Slot Hypothesis stated as one equation; pipeline packaged (`phaseprobe`); same probe on GPT-2 small (12 layers, foreign family) | Wave replicates and strengthens (0.877 vs 0.80 benchmark). Period does not transfer: 1.60 vs ~2.7 cycles — **family-specific clock, universal clock-structure**. Slot structure gated (tense/plurality R = 0.17/0.11, below the locked gate); unresolved, not absent. Chapter open. |
+| **8 — The pendulum** | What sets each network's clock? | Nine networks, five labs; phantom-validated instruments; two-rhythm and free-frequency fits against scrambled-layer nulls | The clock-rate instrument failed its phantom test: ν retired, ch5–7 clock claims superseded, ch6 slots pending re-test. Genuine slow rhythm (~1.35–1.40) in OPT and Phi; Pythia's profile reproducible but not periodic. Chapter open. |
 
 
 ## Method
@@ -189,6 +196,54 @@ Caveats, stated plainly: one foreign model, one size (124M); CPU fp32 run (weigh
 
 ![two breathers, one ruler — one wave form, two family tempos](two_breathers_one_ruler.PNG)
 
+## Chapter 8: the pendulum — the clock on trial, and the instrument that broke it
+
+Chapter 7 left one question: if every network keeps its own tempo ν, what
+sets it? Chapter 8 hunted the answer across nine networks from five labs,
+and in the end found it in the instrument.
+
+**The hunt.** Not the training data: Pythia and its deduplicated twin read
+the same. Not the family: GPT-Neo, trained on Pythia's data, read GPT-2's
+tempo. Not rotary embeddings: Qwen fit the pattern, Phi broke it. Then the
+seeds: the same Pythia model, trained from different random starts, read
+1.60 and 2.68. A network-level constant cannot do that.
+
+**The phantom.** So the instrument went on trial, the way you test a scanner:
+synthetic signals with known answers. The Hilbert cycle count read a true
+slow rhythm (1.35 cycles) as ~1.7–1.8, became unstable on mixtures of
+rhythms, and returned a confident number even for shapes that don't cycle
+at all. ν was retired.
+
+**What the new instruments found.** A phantom-validated two-rhythm fit and a
+free-frequency fit, each checked against the same wave with its layers
+scrambled. Two networks from different labs, OPT-1.3B and Phi-1.5,
+independently carry a genuine slow rhythm at ~1.35–1.40 cycles, beating
+their scrambled versions by ~0.5. Pythia's depth profile is real (it
+reproduces across sentences and survived the Chapter 5 axis-split control)
+but it is no more periodic than its own layers shuffled. Its "~2.7 cycles"
+was the cycle count of a shape, not a clock. Layer 13, the anomaly three
+instruments flagged in Chapters 4–5, turns out to be that shape's crest.
+12-layer models are too short to tell rhythm from noise.
+
+Side findings: in networks with parallel blocks, the MLP sees nothing of the
+flip at layer 0 until attention has carried it (Pythia, Phi; none of the
+sequential networks); and attention's contribution is steadier across
+sentences than the MLP's in all six networks tested.
+
+**What this means for the chapters above.** The clock-rate claims of
+Chapters 5–7 are superseded. The Chapter 6 phase slots were measured as
+phases on Pythia's non-periodic wave, so they are pending a re-test with
+the new tools; what they may really show is that different features have
+reproducibly different depth profiles. The soak (Chapter 2) and the scaling
+result (Chapters 3–4) stand. This chapter took the record of locked
+predictions killed to 19.
+
+Caveats, stated plainly: one probe recipe throughout; the slow rhythm rests
+on two networks and one feature; the mechanism is unknown. Queued: whether
+the Pythia family shares one depth fingerprint across sizes (a re-reading
+of Chapter 5), a phase-slot re-test with the new instruments, and the
+checkpoint sweep.
+
 
 ## Where this goes: a geometric harness
 
@@ -208,6 +263,8 @@ Chapter 5 lives in ch5-wave-on-trial.ipynb (GPU runtime recommended; Pythia-410m
 Chapter 6 lives in ch6-plurality-phase-slot.ipynb (GPU runtime recommended; Pythia-410m).(Loads weights via curl + local disk in the final cells — a workaround for an HF CDN incident on the day of the run; the standard Hub route works equally well.)
 
 Chapter 7 lives in ch7-one-clock-many-models.ipynb (chapter open; GPT-2 small runs on free-tier CPU in ~30 min — no GPU needed. Weights load via curl + local disk in the current cells, a workaround for an HF CDN incident on the day of the run; the standard Hub route works equally well on a normal day).
+
+
 
 ## The transfer, animated
 
