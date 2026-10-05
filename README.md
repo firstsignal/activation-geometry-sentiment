@@ -247,7 +247,7 @@ checkpoint sweep.
 
 ## Where this goes: a geometric harness
 
-This project reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives. Chapter 5 sharpens it further: features share one clock at fixed fractional depths, so a harness needs to learn one rhythm per network, not one per feature. Chapter 6 sharpens it again: each feature holds its own fixed phase of that rhythm — so a feature’s phase address is itself an identifying signature, and a harness that knows the clock may be able to tell which feature is concentrating from when it concentrates.
+This project reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives. Chapter 5 sharpens it further: features share one clock at fixed fractional depths, so a harness needs to learn one rhythm per network, not one per feature. Chapter 6 sharpens it again: each feature holds its own fixed phase of that rhythm — so a feature’s phase address is itself an identifying signature, and a harness that knows the clock may be able to tell which feature is concentrating from when it concentrates. Chapter 8 removes the clock from this picture. What remains for a harness is the readable direction, the reproducible depth profile, and, in some networks, a real slow rhythm.
 
 
 
@@ -268,7 +268,9 @@ Chapter 7 lives in ch7-one-clock-many-models.ipynb (chapter open; GPT-2 small ru
 
 ## The transfer, animated
 
-A looping visualisation of ch7's result: the wave leaves Pythia's cube, crosses to GPT-2's, and takes hold at its own tempo — while the 2.7-cycle ghost that didn't survive the crossing flickers and dies to a faint trace. The rhythm travels; the tempo doesn't.
+A looping visualisation of ch7's result: the wave leaves Pythia's cube, crosses to GPT-2's, and takes hold at its own tempo — while the 2.7-cycle ghost that didn't survive the crossing flickers and dies to a faint trace. The rhythm travels; the tempo doesn't. 
+
+(Made during Chapter 7; Chapter 8 found the tempo readings it depicts were instrument artifacts.)
 
 **[▶ Watch it live](https://firstsignal.github.io/activation-geometry-sentiment/p1-transfer.html)** · or open `p1-transfer.html` locally in any browser.
 
