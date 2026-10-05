@@ -8,7 +8,7 @@
 > slots are being re-tested. The soak and scaling results stand.
 > Details in `ch8-the-pendulum.ipynb`.
 
-How meaning moves through a transformer — found, traced, and tested across six chapters and four model scales.
+How meaning moves through a transformer — found, traced, and tested across eight chapters and four model scales, nine networks.
 
 ## What this adds up to
 
@@ -172,7 +172,7 @@ The distinctness gate, closed. The final queued test: is plurality’s 21° genu
 Caveats, stated plainly: one model (410m); three of eight tense pairs abstained under the joint-loudness rule, so tense’s n = 5; all angles are measured against sentiment’s mean curve as the reference; plurality’s 21° is confirmed distinct from the control’s 0° by two-sample circular tests (Watson–Williams p = 0.0043; assumption-free permutation test, 10k shuffles, p = 0.0056); the plurality axis may carry verb-agreement flavour from the ch2 sets; the quadrature reading of r = 0.008 was an interpretive hunch preceding the ch6 data, not a locked prediction — the locked predictions this chapter graded were the three above; mechanism untested; cross-scale phase check queued.
 
 
-Chapter 7: one clock, many models — the hypothesis meets a stranger
+## Chapter 7: one clock, many models — the hypothesis meets a stranger
 
 Six chapters, one model family. Every number so far could in principle be a fact about EleutherAI’s training recipe rather than about transformers. Chapter 7 compressed the findings into a single falsifiable statement and handed the instrument to a foreign model.
 
