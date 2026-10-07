@@ -2,13 +2,31 @@
 
 # activation-geometry-sentiment
 
-> **Update (Oct 2026):** Chapter 8 built a better instrument and tested
-> the old one on synthetic signals. Some conclusions below changed: the
-> "clock rate" (ν) readings were unreliable, and the Chapter 6 phase
-> slots are being re-tested. The soak and scaling results stand.
-> Details in `ch8-the-pendulum.ipynb`.
+> **Update (Oct 2026) — read this first.** Chapters 8 and 9 revisited the
+> earlier claims with better-validated instruments.
+>
+> - **Superseded:** the "clock rate" (ν) readings and every claim built on
+>   them in Chapters 5–7: one clock per network, family-specific tempos,
+>   and the fractional ~2.7-cycle period. A phantom test showed the
+>   instrument misreads rhythms and returns cycle counts for shapes that
+>   don't cycle.
+> - **Unconfirmed:** the Chapter 6 phase slots. They were measured as
+>   phases on a depth profile later shown not to be periodic, and were not
+>   re-tested before the project closed.
+> - **Standing:** the soak (Chapter 2), concentration holding at ~9–20×
+>   chance across scale (Chapters 3–4), and a depth profile that is
+>   reproducible across sentences in every network measured.
+> - **Final result (Chapter 9):** across five networks from four labs, on
+>   entirely fresh sentences, tense moves through depth in a shared way
+>   beyond chance, sentiment does not, and two networks (OPT and Phi) hold
+>   sentiment as a stable mirror image. Some knowledge has a shape that
+>   different minds share.
+>
+> The chapters below are kept as written, as an honest record of how the
+> project got here.
 
-How meaning moves through a transformer — found, traced, and tested across eight chapters and four model scales, nine networks.
+How meaning moves through a transformer — found, traced, and tested across nine chapters, fourteen models and five labs.
+
 
 ## What this adds up to
 
@@ -31,6 +49,9 @@ None of this is yet a law. It is three features, one model family, nine sentence
 | **6 — The phase slots** | Does a third feature share the clock — and where does it sit? | Plurality axis (ch2 sets), noun-only past-tense flip pairs; per-pair Hilbert phase with circular statistics and a self-control | Plurality waves (0.64, at threshold). Per-pair phase offsets cluster hard: sentiment 0° (control, R=0.99), plurality ~21° (R=0.97), tense ~89° — **quadrature** (R=1.00). Three features, three locked angles, one clock. ch5's r=0.01 resolved: orthogonality, not non-relation. Distinctness confirmed (permutation p = 0.005).
 | **7 — The stranger** | Does the clock belong to Pythia or to transformers? | Phase-Slot Hypothesis stated as one equation; pipeline packaged (`phaseprobe`); same probe on GPT-2 small (12 layers, foreign family) | Wave replicates and strengthens (0.877 vs 0.80 benchmark). Period does not transfer: 1.60 vs ~2.7 cycles — **family-specific clock, universal clock-structure**. Slot structure gated (tense/plurality R = 0.17/0.11, below the locked gate); unresolved, not absent. Chapter open. |
 | **8 — The pendulum** | What sets each network's clock? | Nine networks, five labs; phantom-validated instruments; two-rhythm and free-frequency fits against scrambled-layer nulls | The clock-rate instrument failed its phantom test: ν retired, ch5–7 clock claims superseded, ch6 slots pending re-test. Genuine slow rhythm (~1.35–1.40) in OPT and Phi; Pythia's profile reproducible but not periodic. Chapter open. |
+| **9 — Knowledge is knowledge** | Does a depth profile belong to the feature or to the network? | Five 24-layer networks, four labs; three features; fresh test and axis sentences; phase-randomised surrogate nulls | Broad version killed (no general sharing). Tense profiles shared across networks beyond chance on all-fresh inputs (+0.22, p ≈ 0.013); sentiment not shared on average; OPT–Phi hold sentiment as a stable mirror (r = −0.88, beyond chance). Surface knowledge travels; relational knowledge is found anew by each network. |
+
+
 
 
 ## Method
@@ -249,6 +270,61 @@ checkpoint sweep.
 
 This project reads one model, offline. The natural extension is a live **geometric harness**: monitoring a model's proximity to interpretable directions during generation and using that geometry as a control surface — flagging or gating on approach to safety-relevant regions of activation space. That's the larger idea this artifact is the first step toward. Chapters 3 and 4 strengthen the case: the soak concentrates onto readable directions — increasingly so relative to chance as models scale — meaning drift toward a feature is visible before the feature-word arrives. Chapter 5 sharpens it further: features share one clock at fixed fractional depths, so a harness needs to learn one rhythm per network, not one per feature. Chapter 6 sharpens it again: each feature holds its own fixed phase of that rhythm — so a feature’s phase address is itself an identifying signature, and a harness that knows the clock may be able to tell which feature is concentrating from when it concentrates. Chapter 8 removes the clock from this picture. What remains for a harness is the readable direction, the reproducible depth profile, and, in some networks, a real slow rhythm.
 
+## Chapter 9: knowledge is knowledge
+
+Chapter 8 retired the clock but left something standing: every network
+carries a reproducible depth profile. This chapter asked whose that shape
+is. The hypothesis, stated before any data: knowledge is knowledge. If the
+shape belongs to what is being learned rather than to the learner, the same
+feature should move through depth the same way in networks that have
+nothing else in common.
+
+**The broad version died.** Five 24-layer networks from four labs
+(Pythia-410m, Qwen2-0.5B, OPT-1.3B, Phi-1.5, GPT-Neo-1.3B) × three
+features. Locked: same-feature profiles across networks would resemble each
+other more than different features within one network. They didn't, and
+neither side won: both means sat near zero (0.10 vs 0.15). The printed
+verdict in that cell claimed "the shape belongs to the network"; that
+overstated the result and was corrected. Plurality failed its coherence gate
+in four of five networks.
+
+**The narrow version survived, four ways.** An exploratory look underneath
+those near-zero means found two leads: tense profiles resembled each other
+across networks while sentiment's did not, and OPT and Phi held sentiment as
+near-exact opposites (r = −0.73). Leads found by looking prove nothing, so
+both were locked and re-tested on sentences never used before: mid-sentence
+single-token flips, 12/12 pairs usable in every network.
+
+- **Fresh test sentences:** OPT–Phi sentiment r = −0.75; tense cross-network
+  mean +0.41 vs sentiment −0.02. Individual pairwise correlations replicated
+  across sentence sets (tense Neo–Pythia 0.63 → 0.62; sentiment OPT–Pythia
+  0.39 → 0.41).
+- **Against chance:** phase-randomised surrogates that keep each profile's
+  smoothness but scramble its shape, 10,000 draws. Not one reached the
+  OPT–Phi value (p < 0.0001); three in ten thousand reached the tense mean.
+- **Fresh measuring sticks too:** new axis sentences as well as new test
+  sentences, nothing carried over. OPT–Phi strengthened to r = −0.88.
+  Tense held but halved, to +0.224: part of the earlier signal had come
+  from the reused axes.
+- **That last number against chance:** above the null's 97.5th percentile
+  (p ≈ 0.013), reproduced exactly after a full re-measurement on a new
+  machine.
+
+**What the chapter concludes.** Knowledge that is spelled in the word itself
+(tense) moves through depth in a shared, if modest, way across unrelated
+networks. Knowledge that must be built from relations between words
+(sentiment) does not share a shape on average, though particular networks
+stand in fixed relationships to one another, including one stable mirror
+image. The further knowledge sits from the surface of the words, the more
+each network finds its own path. This echoes Chapter 2's assembly distance,
+now across minds rather than across depth.
+
+Caveats, stated plainly: five networks, two features, one probe recipe; the
+tense effect is small; OPT and Phi also oppose each other on tense
+(r = −0.41, exploratory), so the mirror may belong to that pair of networks
+rather than to sentiment as knowledge. That is the open question this
+project leaves for whoever picks it up next. Locked predictions in this
+chapter: one killed, six survived (P24–P29).
 
 
 ## Run it
@@ -263,6 +339,11 @@ Chapter 5 lives in ch5-wave-on-trial.ipynb (GPU runtime recommended; Pythia-410m
 Chapter 6 lives in ch6-plurality-phase-slot.ipynb (GPU runtime recommended; Pythia-410m).(Loads weights via curl + local disk in the final cells — a workaround for an HF CDN incident on the day of the run; the standard Hub route works equally well.)
 
 Chapter 7 lives in ch7-one-clock-many-models.ipynb (chapter open; GPT-2 small runs on free-tier CPU in ~30 min — no GPU needed. Weights load via curl + local disk in the current cells, a workaround for an HF CDN incident on the day of the run; the standard Hub route works equally well on a normal day).
+
+Chapter 8 lives in ch8-the-pendulum.ipynb (CPU-friendly; written for Colab on Python 3.13 with TransformerLens pinned to 3.5.1, plus small compatibility patches set up in the first cells).
+
+Chapter 9 lives in ch9-knowledge-is-knowledge.ipynb (CPU-friendly; profiles are saved to disk as they're measured, so a crash or timeout resumes where it stopped).
+
 
 
 
