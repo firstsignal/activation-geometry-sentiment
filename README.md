@@ -22,6 +22,14 @@
 >   sentiment as a stable mirror image. Some knowledge has a shape that
 >   different minds share.
 >
+>   - **Phase slots (Chapter 6):** not re-testable in Pythia, whose depth
+>   profile isn't a rhythm. A locked re-test (P30, 60%) in the two networks
+>   that do have one was killed: OPT showed distinct slots (sentiment and
+>   tense ~98° apart, p = 0.0001, close to Chapter 6's quadrature), but Phi
+>   did not (9° apart, p = 0.38). Phase slots are not established in
+>   general.
+
+>
 > The chapters below are kept as written, as an honest record of how the
 > project got here.
 
@@ -354,6 +362,16 @@ A looping visualisation of ch7's result: the wave leaves Pythia's cube, crosses 
 (Made during Chapter 7; Chapter 8 found the tempo readings it depicts were instrument artifacts.)
 
 **[▶ Watch it live](https://firstsignal.github.io/activation-geometry-sentiment/p1-transfer.html)** · or open `p1-transfer.html` locally in any browser.
+
+## The knowledge, animated
+
+A looping visualisation of Chapter 9. Tense moves through depth with part of
+its shape shared across five networks from four labs. Sentiment takes its own
+path in each network. OPT and Phi hold sentiment as near-mirror images. The
+curves are illustrative, tuned so their correlations match the measured values.
+
+**[▶ Watch it live](https://firstsignal.github.io/activation-geometry-sentiment/ch9-knowledge.html)**
+
 
 
 
