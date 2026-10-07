@@ -29,9 +29,9 @@
 >   did not (9° apart, p = 0.38). Phase slots are not established in
 >   general.
 
->
-> The chapters below are kept as written, as an honest record of how the
-> project got here.
+
+The chapters below are kept as written, as an honest record of how the
+project got here.
 
 How meaning moves through a transformer — found, traced, and tested across nine chapters, fourteen models and five labs.
 
