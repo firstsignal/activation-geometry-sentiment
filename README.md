@@ -373,6 +373,8 @@ its shape shared across five networks from four labs. Sentiment takes its own
 path in each network. OPT and Phi hold sentiment as near-mirror images. The
 curves are illustrative, tuned so their correlations match the measured values.
 
+![Chapter 9: knowledge is knowledge](ch9-knowledge.png)
+
 **[▶ Watch it live](https://firstsignal.github.io/activation-geometry-sentiment/ch9-knowledge.html)**
 
 
