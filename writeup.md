@@ -1,3 +1,23 @@
+> **Correction (October 2026): read this first.**
+> This writeup reflects the project as of Chapter 7 and is partly superseded.
+> Chapters 8–9 re-tested its claims with better-validated instruments:
+>
+> - **Superseded:** the "clock rate" (~2.7 cycles, family-specific tempos).
+>   A synthetic phantom test showed the Hilbert-phase instrument misreads
+>   rhythms and returns cycle counts for shapes that don't cycle, so it
+>   was retired.
+> - **Not established in general:** the phase slots. A locked re-test (P30)
+>   found distinct slots in OPT but not in Phi.
+> - **Standing:** the soak, concentration defended across scale
+>   (~9× to ~20× above chance), and a reproducible depth profile in
+>   every network measured.
+> - **Latest result:** across five networks from four labs, tense shares
+>   part of its depth profile beyond chance (r = +0.22, p ≈ 0.013);
+>   sentiment does not, and OPT and Phi hold it as a mirror image.
+>
+> See the README for the full update. The text below is kept as written,
+> as an honest record.
+
 # Three features, one clock: phase encodes feature identity in Pythia
 
 *All code, notebooks, and figures: [github.com/firstsignal/activation-geometry-sentiment](https://github.com/firstsignal/activation-geometry-sentiment) — predictions locked before each run; kills recorded alongside survivals. If you use this work or the phaseprobe method, please cite the repository (Naomi James, 2026).*
